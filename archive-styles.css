@@ -1,0 +1,10 @@
+/* Archive widget image styles */
+.elementor-posts-container .elementor-post img,
+.elementor-posts-container .elementor-post .elementor-post__thumbnail img,
+.elementor-posts-container .elementor-post .elementor-post__text img,
+.elementor-posts-container .elementor-post .elementor-post__thumbnail,
+.elementor-posts-container .elementor-post .elementor-post__text {
+    border-radius: 16px !important;
+    border: none !important;
+    overflow: hidden !important;
+} 

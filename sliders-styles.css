@@ -1,0 +1,40 @@
+/* ======================================
+   Slider Left Styles
+   ====================================== */
+
+.slider-left h1,
+.slider-left h2,
+.slider-left h3,
+.slider-left h4,
+.slider-left h5,
+.slider-left h6,
+.slider-left p {
+    text-align: right;
+}
+
+/* Mobile text alignment */
+@media screen and (max-width: 767px) {
+    .slider-left h1,
+    .slider-left h2,
+    .slider-left h3,
+    .slider-left h4,
+    .slider-left h5,
+    .slider-left h6,
+    .slider-left p {
+        text-align: left;
+    }
+}
+
+/* ======================================
+   Slider Right Styles
+   ====================================== */
+
+.slider-right h1,
+.slider-right h2,
+.slider-right h3,
+.slider-right h4,
+.slider-right h5,
+.slider-right h6,
+.slider-right p {
+    text-align: left;
+} 

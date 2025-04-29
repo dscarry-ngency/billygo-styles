@@ -1,0 +1,47 @@
+.blog-content {
+    text-align: left;
+}
+
+/* Headings - primary color */
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+    text-align: inherit;
+    color: var(--color-primary);
+}
+
+/* Text elements - text color */
+.blog-content p,
+.blog-content ul,
+.blog-content ol {
+    text-align: inherit;
+    color: var(--color-text) !important;
+}
+
+/* Posts widget image styles */
+.blog-content .elementor-posts-container .elementor-post__thumbnail,
+.blog-content .elementor-posts-container .elementor-post__thumbnail img,
+.blog-content .elementor-posts-container .elementor-post__thumbnail__link img,
+.blog-content img {
+    border-radius: 16px !important;
+    border: none !important;
+    overflow: hidden !important;
+}
+
+/* Archive widget image styles */
+.elementor-archive-posts .elementor-post__thumbnail,
+.elementor-archive-posts .elementor-post__thumbnail img,
+.elementor-archive-posts .elementor-post__thumbnail__link img,
+.elementor-archive-posts .elementor-post__thumbnail__link,
+.elementor-archive-posts .elementor-post__thumbnail__link a,
+.elementor-archive-posts .elementor-post__thumbnail__link a img,
+.elementor-archive-posts .elementor-post__thumbnail__link a img,
+.elementor-archive-posts .elementor-post__thumbnail__link a img,
+.elementor-archive-posts .elementor-post__thumbnail__link a img {
+    border-radius: 16px !important;
+    border: none !important;
+    overflow: hidden !important;
+}

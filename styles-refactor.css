@@ -1,0 +1,1004 @@
+/* ======================================
+   Style Sheet: ndm 0409-01 (TEST VERSION)
+   Author: Duncan Scarry
+   Site: billygo.com
+   ====================================== */
+
+/* ======================================
+   Design System Scale Declarations
+   This section defines the fluid typography
+   and spacing scales used throughout the site.
+   All values use clamp() for responsive scaling.
+   ====================================== */
+   
+   :root {
+    /* TYPOGRAPHY SCALE
+       A modular type scale that smoothly adjusts
+       from mobile to desktop sizes */
+    --step--2: clamp(0.75rem, 0.65rem + 0.35vw, 1rem);
+    --step--1: clamp(0.9rem, 0.8rem + 0.4vw, 1.25rem);
+    --step-0: clamp(1.1rem, 1rem + 0.6vw, 1.75rem);
+    --step-1:  clamp(1.25rem, 0.99rem + 0.585vw, 1.485rem);
+    --step-2:  clamp(1.563rem, 1.215rem + 0.765vw, 1.89rem);
+    --step-3:  clamp(1.953rem, 1.485rem + 0.945vw, 2.34rem);
+    --step-4:  clamp(2.441rem, 1.845rem + 1.17vw, 2.88rem);
+  
+    /* SPACING SCALE
+       Consistent spacing units that scale fluidly
+       with viewport width */
+    --space-3xs: clamp(0.25rem, 0.2rem + 0.2vw, 0.5rem);
+    --space-2xs: clamp(0.375rem, 0.3rem + 0.3vw, 0.75rem);
+    --space-xs:  clamp(0.5rem, 0.4rem + 0.4vw, 1rem);
+    --space-s:   clamp(0.75rem, 0.6rem + 0.6vw, 1.5rem);
+    --space-m:   clamp(1rem, 0.8rem + 0.8vw, 2rem);
+    --space-l:   clamp(1.5rem, 1.2rem + 1vw, 3rem);
+    --space-xl:  clamp(2rem, 1.6rem + 1.5vw, 4rem);
+    --space-2xl: clamp(3rem, 2.4rem + 2vw, 6rem);
+    --space-3xl: clamp(4rem, 3.2rem + 3vw, 8rem);
+  
+    /* Fallbacks for older browsers */
+    @supports not (clamp: 1rem) {
+      --step-0: 1rem;
+      --space-m: calc(1rem + 0.8vw);
+      /* Other critical fallbacks... */
+    }
+  
+    /* COLOR PALETTE */
+    --color-primary: #0C2752;
+    --color-secondary: #3A81AF;
+    --color-text: #6B6B6B;
+    --color-accent: #db3700;
+    --color-light-grey: #E4E4E4;
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --shadow-small: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    /* FONT FAMILIES */
+    --font-display: 'League Spartan', sans-serif;
+    --font-body: 'Lato', sans-serif;
+  
+    /* ASSETS */
+    --icon-url: url('/wp-content/uploads/2025/04/go.svg');
+  
+    /* Borders */
+    --border-radius: 16px;
+  }
+  
+  /* ======================================
+     Font Loading Optimization
+     Add these lines to your HTML <head> section:
+     
+     <link rel="preload" href="/wp-content/uploads/2025/04/LeagueSpartan-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+     <link rel="preload" href="/wp-content/uploads/2025/04/Lato-Regular.woff2" as="font" type="font/woff2" crossorigin>
+     <link rel="preload" href="/wp-content/uploads/2025/04/Lato-Bold.woff2" as="font" type="font/woff2" crossorigin>
+     ====================================== */
+  
+  /* ======================================
+     Font Face Declarations
+     ====================================== */
+  @font-face {
+    font-family: 'League Spartan';
+    src: url('/wp-content/uploads/2025/04/LeagueSpartan-VariableFont_wght.ttf') format('truetype-variations');
+    font-weight: 300 700;  /* Variable font weight range */
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Lato Regular'),
+         url('/wp-content/uploads/2025/04/Lato-Regular.woff2') format('woff2');
+  }
+  
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Lato Bold'),
+         url('/wp-content/uploads/2025/04/Lato-Bold.woff2') format('woff2');
+  }
+  
+  /* ======================================
+     Typography Styles for Elementor
+     ====================================== */
+  
+  /* Global Headings - Common Styles */
+  h1, h2, h3, h4,
+  .elementor-widget-heading h1,
+  .elementor-widget-heading h2,
+  .elementor-widget-heading h3,
+  .elementor-widget-heading h4,
+  .elementor-heading-title,
+  .elementor-dynamic-tags h1,
+  .elementor-dynamic-tags h2,
+  .elementor-dynamic-tags h3,
+  .elementor-dynamic-tags h4 {
+    font-family: var(--font-display);
+    text-rendering: optimizeLegibility;
+    color: inherit;
+    letter-spacing: -0.02em;
+  }
+  
+  /* For sections that don't specify a color, fallback to primary color */
+  .elementor-section h1,
+  .elementor-section h2,
+  .elementor-section h3,
+  .elementor-section h4,
+  .elementor-section .elementor-widget-heading h1,
+  .elementor-section .elementor-widget-heading h2,
+  .elementor-section .elementor-widget-heading h3,
+  .elementor-section .elementor-widget-heading h4,
+  .elementor-section .elementor-dynamic-tags h1,
+  .elementor-section .elementor-dynamic-tags h2,
+  .elementor-section .elementor-dynamic-tags h3,
+  .elementor-section .elementor-dynamic-tags h4 {
+    color: var(--color-primary);
+  }
+  
+  /* Individual Heading Styles */
+  h1, .elementor-widget-heading h1, .elementor-dynamic-tags h1 {
+    font-size: var(--step-4);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  
+  h2, .elementor-widget-heading h2, .elementor-dynamic-tags h2 {
+    font-size: var(--step-3);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  h3, .elementor-widget-heading h3, .elementor-dynamic-tags h3 {
+    font-size: var(--step-2);
+    font-weight: 500;
+    line-height: 1.25;
+  }
+  
+  h4, .elementor-widget-heading h4, .elementor-dynamic-tags h4 {
+    font-size: var(--step-1);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  
+  /* Base paragraph styles - default to text color */
+  p, .elementor-widget-text-editor p {
+    font-size: var(--step-0);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 2;
+    margin-bottom: var(--space-m);
+    color: var(--color-text);  /* Default to text color */
+  }
+  
+  /* Remove margin from last paragraph in text widget to prevent double spacing */
+  .elementor-widget-text-editor p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* When a button follows a text widget, remove the row gap */
+  .elementor-widget-text-editor + .elementor-widget-button {
+    margin-top: 0;  /* Override the previous margin-top we had */
+  }
+  
+  /* Remove the bottom margin of the text widget itself */
+  .elementor-widget-text-editor {
+    margin-bottom: 0;
+  }
+  
+  /* Only set left alignment for paragraphs in sections where we want it as default */
+  .section p {
+    text-align: left;
+  }
+  
+  /* Reversed section paragraphs - inherit white color */
+  .section-rvrs p,
+  .section-rvrs .elementor-widget-text-editor p {
+    color: inherit;  /* Will inherit white from section-rvrs */
+  }
+  
+  /* Nested container paragraphs - inherit parent color */
+  .nested p,
+  .nested .elementor-widget-text-editor p {
+    color: inherit;  /* Will inherit from parent container */
+  }
+  
+  /* ======================================`
+     Container Styles
+     Includes utility containers, site header,
+     sections, and nested layouts
+     ====================================== */
+  
+  /* ======================================
+     Section Slider Styles
+     ====================================== */
+  
+  .section-slider {
+    /* Base section styles */
+    padding: var(--space-2xl) var(--space-l);
+    row-gap: var(--space-l);
+    column-gap: var(--space-m);
+    color: var(--color-primary);
+    text-align: center;
+    position: relative;
+    min-height: 50vh;
+    width: 100%;
+    background-color: var(--color-primary);
+  }
+  
+  /* Base background image structure */
+  .section-slider::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/wp-content/uploads/2025/04/dallas-ft-worth-home.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.75;
+    z-index: 0;
+  }
+  
+  /* Dark overlay */
+  .section-slider::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    opacity: 0.5;
+    z-index: 0;
+  }
+  
+  /* Target Elementor's flex container structure */
+  .section-slider.e-con {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .elementor-element.section-slider .e-con-inner {
+    justify-content: center;
+    display: flex;
+  }
+  
+  /* Ensure content stays above background */
+  .section-slider .elementor-widget {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Text color, shadow, and alignment styles */
+  .section-slider h1,
+  .section-slider h2,
+  .section-slider h3,
+  .section-slider h4,
+  .section-slider h5,
+  .section-slider h6,
+  .section-slider p,
+  .section-slider .e-con h1,
+  .section-slider .e-con h2,
+  .section-slider .e-con h3,
+  .section-slider .e-con h4,
+  .section-slider .e-con h5,
+  .section-slider .e-con h6,
+  .section-slider .e-con p {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  /* Mobile text alignment */
+  @media screen and (max-width: 767px) {
+    .section-slider h1,
+    .section-slider h2,
+    .section-slider h3,
+    .section-slider h4,
+    .section-slider h5,
+    .section-slider h6,
+    .section-slider p,
+    .section-slider .e-con h1,
+    .section-slider .e-con h2,
+    .section-slider .e-con h3,
+    .section-slider .e-con h4,
+    .section-slider .e-con h5,
+    .section-slider .e-con h6,
+    .section-slider .e-con p {
+        text-align: left;
+    }
+
+    /* Fixed height for mobile */
+    .section-slider,
+    .section-slider.e-con {
+        min-height: 78vh;
+        max-height: 78vh;
+        height: 78vh;
+    }
+  }
+  
+  /* Main Containers */
+  .section {
+    padding: var(--space-2xl) var(--space-l);
+    row-gap: var(--space-2xl);
+    column-gap: var(--space-m);
+    text-align: center;
+    color: var(--color-primary);  /* Section level color for headings */
+  }
+  
+  /* Section headings */
+  .section h1,
+  .section h2,
+  .section h3,
+  .section h4,
+  .section .elementor-heading-title {
+    color: var(--color-primary);
+  }
+  
+  /* Section paragraphs and text */
+  .section p,
+  .section .elementor-widget-text-editor {
+    text-align: left;
+  }
+  
+  /* Nested containers within sections */
+  .section .e-con {
+    padding: 0;
+    row-gap: inherit;
+    column-gap: inherit;
+    color: inherit;
+  }
+  
+  .section .e-con p,
+  .section .e-con .elementor-widget-text-editor p {
+    color: inherit;  /* Will inherit from parent section */
+  }
+  
+  /* Reversed section */
+  .section-rvrs {
+    padding: var(--space-2xl) var(--space-l);
+    row-gap: var(--space-2xl);
+    column-gap: var(--space-m);
+    text-align: center;
+    color: var(--color-white);  /* Section level color */
+  }
+  
+  /* Reversed section headings */
+  .section-rvrs h1,
+  .section-rvrs h2,
+  .section-rvrs h3,
+  .section-rvrs h4,
+  .section-rvrs .elementor-heading-title {
+    color: var(--color-white);
+  }
+  
+  /* Reversed section paragraphs and text */
+  .section-rvrs p,
+  .section-rvrs .elementor-widget-text-editor {
+    color: inherit;  /* Inherit white color from section-rvrs */
+  }
+  
+  /* Nested containers within reversed sections */
+  .section-rvrs .e-con {
+    padding: 0;
+    row-gap: inherit;
+    column-gap: inherit;
+    color: inherit;
+  }
+  
+  .section-rvrs .e-con p,
+  .section-rvrs .e-con .elementor-widget-text-editor p {
+    color: inherit;  /* Will inherit white from section-rvrs */
+  }
+  
+  /* Center buttons in reversed sections */
+  .section-rvrs .elementor-widget-button {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Mobile styles */
+  @media screen and (max-width: 767px) {
+    /* Section mobile adjustments */
+    .section h1,
+    .section h2,
+    .section h3,
+    .section h4,
+    .section .elementor-heading-title {
+      text-align: left;
+    }
+
+    /* Reversed section mobile adjustments */
+    .section-rvrs h1,
+    .section-rvrs h2,
+    .section-rvrs h3,
+    .section-rvrs h4,
+    .section-rvrs .elementor-heading-title {
+      text-align: left;
+    }
+  }
+
+    /* Centered class to override section mobile alignments */
+  .centered h1,
+  .centered h2,
+  .centered h3,
+  .centered h4,
+  .centered .elementor-heading-title {
+    text-align: center !important; /* Use !important to override section mobile styles */
+  }
+  
+  /* Ensure it maintains center alignment even in mobile */
+  @media screen and (max-width: 767px) {
+    .centered h1,
+    .centered h2,
+    .centered h3,
+    .centered h4,
+    .centered .elementor-heading-title {
+      text-align: center !important;
+    }
+  }
+  
+  .site-header {
+    padding-inline: var(--space-l);
+  }
+  
+  .utility {
+    padding-block: var(--space-3xs);
+    padding-inline: var(--space-l);
+    gap: 0;
+    display: grid;
+  }
+  
+  /* Nested Layouts */
+  .nested {
+    padding: 0;
+    row-gap: inherit;
+    column-gap: inherit;
+    color: inherit;
+  }
+  
+  .nested h1,
+  .nested h2,
+  .nested h3,
+  .nested h4,
+  .nested .elementor-heading-title {
+    text-align: left;
+    color: inherit;
+  }
+  
+  .nested .elementor-widget {
+    margin-bottom: 0;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .nested {
+        row-gap: var(--space-m);
+        column-gap: var(--space-s);
+    }
+  }
+  
+  /* Target Elementor widget wrappers and their containers */
+  .nested > .elementor-widget,
+  .nested > .elementor-element,
+  .nested > .elementor-container > .elementor-row > .elementor-element,
+  .nested > .e-con-inner > .elementor-widget {
+    margin: 0 !important;
+  }
+  
+  /* Right-aligned nested container */
+  .nested-right {
+    padding: 0;
+    color: inherit;
+    display: grid;
+    row-gap: inherit;
+    column-gap: inherit;
+    text-align: right;
+  }
+  
+  /* Right-aligned nested headings - including Elementor widget selectors */
+  .nested-right h1,
+  .nested-right h2,
+  .nested-right h3,
+  .nested-right h4,
+  .nested-right .elementor-heading-title,
+  .nested-right .elementor-widget-heading h1,
+  .nested-right .elementor-widget-heading h2,
+  .nested-right .elementor-widget-heading h3,
+  .nested-right .elementor-widget-heading h4 {
+    text-align: inherit;
+    color: inherit;
+  }
+  
+  /* Right-aligned nested paragraphs and text */
+  .nested-right p,
+  .nested-right .elementor-widget-text-editor {
+    text-align: inherit;
+    color: inherit;
+  }
+  
+  /* Remove all margins from elements in right-aligned nested containers */
+  .nested-right > * {
+    margin: 0;
+  }
+  
+  /* Template Container */
+  .template {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .elementor-section.template,
+  .elementor-container.template {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Button Styles */
+  .elementor-widget-button .elementor-button,
+  .elementor-button {
+    background-color: var(--color-accent);
+    font-family: var(--font-display) !important;
+    font-weight: 800;
+    font-size: var(--step--1);
+    color: var(--color-white);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    padding: 1rem 1.25rem 0.75rem 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border-radius: 9999px;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.25px;
+    background-image: none;
+    white-space: nowrap;
+  }
+  
+  /* Hover state */
+  .elementor-widget-button .elementor-button:hover,
+  .elementor-button:hover {
+    background-color: #b32f00;
+  }
+  
+  /* Active state */
+  .elementor-widget-button .elementor-button:active,
+  .elementor-button:active {
+    transform: translateY(0);
+  }
+  
+  /* Mobile styles */
+  @media only screen and (max-width: 767px) {
+    .elementor-widget-button .elementor-button,
+    .elementor-button {
+      width: 100%;
+      align-self: stretch;
+      justify-content: center;
+      text-align: center;
+      display: flex;
+      white-space: normal;
+    }
+    
+    .elementor-widget-button {
+      width: 100%;
+      display: block;
+    }
+  }
+  
+  /* Spacing Helpers */
+  .tight {
+    gap: var(--space-3xs) !important;
+  }
+  
+  .tight > * {
+    margin-bottom: 0;
+  }
+  
+  /* Image Helpers */
+  .rounded,
+  .rounded img {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  
+  /* Form Container Styles */
+  .form-container,
+  .elementor-section.form-container {
+    position: relative;
+    background-color: var(--color-primary);
+    padding: var(--space-s);
+    border: 3px solid var(--color-white);
+    overflow: hidden;
+    border-radius: 16px;
+    height: fit-content;
+    align-self: center;
+    min-height: auto !important;
+  }
+  
+  /* Background overlay - moved to lowest z-index */
+  .form-container::before,
+  .elementor-section.form-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/wp-content/uploads/2025/04/waves.webp');
+    background-position: center center;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.1;
+    z-index: 0;
+    border-radius: 16px;
+  }
+  
+  /* Ensure content stays above overlay */
+  .form-container > .elementor-container {
+    position: relative;
+    z-index: 1;
+    height: fit-content;
+  }
+  
+  /* Form Label Styles */
+  .form-container .elementor-field-label,
+  .elementor-section.form-container .elementor-field-label {
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    margin-bottom: var(--space-2xs);
+  }
+  
+  /* Form Styles */
+  .form-style .elementor-field-label {
+    color: #ffffff !important;
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    margin-bottom: var(--space-2xs);
+  }
+  
+  .form-style .elementor-field-group {
+    margin-bottom: var(--space-s);
+  }
+  
+  .form-style .elementor-field {
+    border: 1px solid var(--color-white);
+    background-color: transparent;
+    color: var(--color-white);
+    padding: var(--space-2xs) var(--space-xs);
+  }
+  
+  .form-style .elementor-field::placeholder {
+    color: var(--color-white);
+    opacity: 0.7;
+  }
+  
+  .form-style .elementor-button {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    padding: var(--space-2xs) var(--space-m);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+  }
+  
+  .form-style .elementor-button:hover {
+    transform: translateY(-1px);
+  }
+  
+  .section-white {
+    padding: var(--space-2xl) var(--space-l);
+    row-gap: var(--space-2xl);
+    column-gap: var(--space-m);
+    color: var(--color-white);
+    text-align: center;
+  }
+  
+  /* Keep paragraphs white instead of defaulting to text color */
+  .section-white p,
+  .section-white .elementor-widget-text-editor p {
+    color: inherit;
+  }
+  
+  /* Ensure text widgets inherit color properly */
+  .elementor-widget-text-editor {
+    color: inherit;
+  }
+  
+  .elementor-widget-text-editor * {
+    color: inherit;
+  }
+  
+  /* Specific override for footer license text if needed */
+  .section-rvrs .elementor-widget-text-editor,
+  .section-rvrs .elementor-widget-text-editor p,
+  .section-rvrs .elementor-widget-text-editor span {
+    color: var(--color-white) !important;
+  }
+  
+  /* Global Link Styles */
+  a:not(.phone):not(.elementor-button):not(.elementor-button-link) {
+    color: inherit;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+  }
+  
+  /* Hover state */
+  a:not(.phone):not(.elementor-button):not(.elementor-button-link):hover {
+    opacity: 0.8;
+  }
+  
+  /* Lists - default state */
+  .elementor-widget-text-editor ul:not(.elementor-icon-list-items),
+  .elementor-text-editor ul:not(.elementor-icon-list-items) {
+      list-style: disc;  /* Restore default bullet style */
+      padding-left: 1.5em;
+      margin: 1em 0;
+      color: inherit;  /* Allow inheritance from parent sections */
+      font-family: inherit;  /* Allow font inheritance */
+  }
+  
+  .elementor-widget-text-editor ul:not(.elementor-icon-list-items) li,
+  .elementor-text-editor ul:not(.elementor-icon-list-items) li {
+      color: inherit;  /* Allow inheritance from parent sections */
+      font-family: inherit;  /* Allow font inheritance */
+  }
+  
+  /* Only set default color when not in a styled section */
+  :where(.elementor-widget-text-editor ul):not(.elementor-icon-list-items):not(.section-rvrs *):not(.section-white *):not([class*='section-']) {
+      color: var(--color-text);
+      font-family: var(--font-body);  /* Default font for unstyled sections */
+  }
+  
+  /* ======================================
+     Section Header Styles
+     ====================================== */
+  .section-header {
+      /* Base section styles */
+      padding: var(--space-2xl) var(--space-l);
+      row-gap: var(--space-2xl);
+      column-gap: var(--space-m);
+      color: var(--color-primary);
+      text-align: center;
+      position: relative;
+      min-height: 50vh;
+      width: 100%;
+      background-color: var(--color-primary);
+  }
+  
+  /* Base background image structure */
+  .section-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      z-index: 1;
+  }
+  
+  /* Dark overlay */
+  .section-header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-primary);
+      opacity: 0.8;
+      z-index: 2;
+  }
+  
+  /* Try multiple header selectors to ensure we catch the right one */
+  .elementor-location-header,
+  .elementor-section-wrap > .elementor-section:first-child,
+  header.site-header,
+  .site-header {
+      position: relative;
+      z-index: 4;
+  }
+  
+  /* Content stays above overlay but below nav */
+  .section-header .elementor-widget,
+  .elementor-element.section-header .e-con-inner {
+      position: relative;
+      z-index: 3;
+  }
+  
+  /* Background image variations */
+  .section-header.bg-home::before {
+      background-image: url('/wp-content/uploads/2025/04/dallas-ft-worth-home.webp');
+  }
+  
+  .section-header.bg-tech::before {
+      background-image: url('/wp-content/uploads/2025/04/billygo-tech-at-door-1.webp');
+  }
+  
+  .section-header.bg-flag::before {
+      background-image: url('/wp-content/uploads/2025/04/texas-flag.webp');
+  }
+  
+  /* Target Elementor's flex container structure */
+  .section-header.e-con {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .elementor-element.section-header .e-con-inner {
+      justify-content: center;
+      display: flex;
+      position: relative;
+      z-index: 3;
+  }
+  
+  /* Text color, shadow, and alignment styles */
+  .section-header h1,
+  .section-header h2,
+  .section-header h3,
+  .section-header h4,
+  .section-header h5,
+  .section-header h6,
+  .section-header p,
+  .section-header .e-con h1,
+  .section-header .e-con h2,
+  .section-header .e-con h3,
+  .section-header .e-con h4,
+  .section-header .e-con h5,
+  .section-header .e-con h6,
+  .section-header .e-con p {
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      position: relative;
+      z-index: 3;
+  }
+  
+  /* Mobile text alignment */
+  @media screen and (max-width: 767px) {
+      .section-header h1,
+      .section-header h2,
+      .section-header h3,
+      .section-header h4,
+      .section-header h5,
+      .section-header h6,
+      .section-header p,
+      .section-header .e-con h1,
+      .section-header .e-con h2,
+      .section-header .e-con h3,
+      .section-header .e-con h4,
+      .section-header .e-con h5,
+      .section-header .e-con h6,
+      .section-header .e-con p {
+          text-align: left;
+      }
+  }
+  
+  /* Ensure accordion headings inherit section colors */
+  .elementor-accordion .elementor-accordion-item .elementor-tab-title,
+  .elementor-accordion .elementor-accordion-item .elementor-accordion-title,
+  .elementor-accordion .elementor-accordion-item .elementor-tab-content {
+      color: inherit;
+  }
+  
+  /* Also ensure the accordion icon inherits color */
+  .elementor-accordion .elementor-accordion-icon {
+      color: inherit;
+  }
+  
+  /* Add posts widget to color inheritance */
+  .elementor-posts-container .elementor-post__title,
+  .elementor-posts-container .elementor-post__excerpt,
+  .elementor-posts-container .elementor-post__text {
+      color: inherit;
+  }
+  
+  /* If there are any post meta elements that need to inherit */
+  .elementor-post__meta-data,
+  .elementor-post-info {
+      color: inherit;
+  }
+  
+  /* Footer container */
+  .footer {
+    padding: var(--space-2xl) var(--space-l);
+    row-gap: var(--space-l);
+    column-gap: var(--space-m);
+    color: var(--color-white);
+  }
+  
+  /* Footer typography - inheriting color and setting alignment */
+  .footer h3,
+  .footer .elementor-heading-title,
+  .footer p {
+    color: inherit;
+  }
+  
+  /* Heading alignment */
+  .footer h3,
+  .footer .elementor-heading-title {
+    text-align: left;
+  }
+  
+  /* Mobile styles */
+  @media screen and (max-width: 767px) {
+    .footer h3,
+    .footer .elementor-heading-title {
+        text-align: center;
+    }
+  }
+  
+  /* Base timeline styles - shares section base styles */
+  .timeline,
+  .timeline-rvrs {
+    position: relative;
+    padding: var(--space-2xl) var(--space-l);
+    row-gap: var(--space-l);
+    column-gap: var(--space-m);
+  }
+  
+  /* Timeline regular */
+  .timeline {
+    color: var(--color-text);
+  }
+  
+  /* Timeline reversed */
+  .timeline-rvrs {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+  
+  /* Nested container within sections - text color inheritance */
+  .section .nested .elementor-widget-text-editor,
+  .section .nested .elementor-widget-text-editor p {
+    color: var(--color-text);
+  }
+  
+  .section-rvrs .nested .elementor-widget-text-editor,
+  .section-rvrs .nested .elementor-widget-text-editor p {
+    color: inherit;
+  }
+  
+  /* Auto-alternating section backgrounds */
+  .elementor-section:not(.nested) {
+    background-color: var(--color-white);
+  }
+  
+  /* If previous section is white, make this one primary */
+  .elementor-section:not(.nested):has(+ .elementor-section:not(.nested)[style*="background-color: var(--color-white)"]) {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+  
+  /* If previous section is primary, make this one white */
+  .elementor-section:not(.nested):has(+ .elementor-section:not(.nested)[style*="background-color: var(--color-primary)"]) {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+  }
+  
+  /* Ensure text colors match the background */
+  .elementor-section:not(.nested)[style*="background-color: var(--color-primary)"] h1,
+  .elementor-section:not(.nested)[style*="background-color: var(--color-primary)"] h2,
+  .elementor-section:not(.nested)[style*="background-color: var(--color-primary)"] h3,
+  .elementor-section:not(.nested)[style*="background-color: var(--color-primary)"] h4,
+  .elementor-section:not(.nested)[style*="background-color: var(--color-primary)"] p {
+    color: var(--color-white);
+  }
+  
+  .elementor-section:not(.nested)[style*="background-color: var(--color-white)"] h1,
+  .elementor-section:not(.nested)[style*="background-color: var(--color-white)"] h2,
+  .elementor-section:not(.nested)[style*="background-color: var(--color-white)"] h3,
+  .elementor-section:not(.nested)[style*="background-color: var(--color-white)"] h4,
+  .elementor-section:not(.nested)[style*="background-color: var(--color-white)"] p {
+    color: var(--color-primary);
+  }
+  
+  
+  
