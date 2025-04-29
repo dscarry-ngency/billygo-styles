@@ -153,7 +153,9 @@
   }
   
   /* Global paragraph styles */
-  p, .elementor-widget-text-editor p {
+  p, 
+  .elementor-widget-text-editor p,
+ {
     /* Typography */
     font-family: var(--font-body);
     font-size: var(--step-0);
@@ -195,23 +197,6 @@
     background-color: var(--color-primary);
   }
   
-  /* Ensure nested containers properly inherit gaps */
-  .section-slider .nested {
-    display: flex;
-    flex-direction: column;
-    row-gap: inherit;
-    column-gap: inherit;
-  }
-
-  /* Add spacing between widgets in section-slider */
-  .section-slider .elementor-widget {
-    margin-bottom: var(--space-l);
-  }
-
-  .section-slider .elementor-widget:last-child {
-    margin-bottom: 0;
-  }
-  
   /* Base background image structure */
   .section-slider::before {
     /* Layout Properties */
@@ -251,19 +236,6 @@
 
     /* Other */
     z-index: 0;
-  }
-  
-  /* Target Elementor's flex container structure */
-  .section-slider.e-con {
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .elementor-element.section-slider .e-con-inner {
-    justify-content: center;
-    display: flex;
   }
   
   /* Ensure content stays above background */
@@ -527,63 +499,6 @@
     .centered .elementor-heading-title {
       text-align: center !important;
     }
-  }
-  
-  /* Right-aligned nested container */
-  .nested-right {
-    padding: 0;
-    color: inherit;
-    display: grid;
-    row-gap: inherit;
-    column-gap: inherit;
-    text-align: right;
-  }
-  
-  /* Right-aligned nested headings - including Elementor widget selectors */
-  .nested-right h1,
-  .nested-right h2,
-  .nested-right h3,
-  .nested-right h4,
-  .nested-right .elementor-heading-title,
-  .nested-right .elementor-widget-heading h1,
-  .nested-right .elementor-widget-heading h2,
-  .nested-right .elementor-widget-heading h3,
-  .nested-right .elementor-widget-heading h4 {
-    text-align: inherit;
-    color: inherit;
-  }
-  
-  /* Right-aligned nested paragraphs and text */
-  .nested-right p,
-  .nested-right .elementor-widget-text-editor {
-    text-align: inherit;
-    color: inherit;
-  }
-  
-  /* Remove all margins from elements in right-aligned nested containers */
-  .nested-right > * {
-    margin: 0;
-  }
-  
-  /* Template Container */
-  .template {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-  
-  .elementor-section.template,
-  .elementor-container.template {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-  
-  /* Spacing Helpers */
-  .tight {
-    gap: var(--space-3xs) !important;
-  }
-  
-  .tight > * {
-    margin-bottom: 0;
   }
   
   /* Image Helpers */
@@ -983,8 +898,27 @@
     color: var(--color-accent);
   }
 
-  .phone .elementor-call-tracking-list-icon {
+  .phone-rvrs .elementor-call-tracking-list-item,
+  .phone-rvrs .call-tracking-widget-list_link {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-white);
+  }
+
+  .phone .elementor-call-tracking-list-icon,
+  .phone .elementor-call-tracking-list-icon svg {
     color: var(--color-primary);
+    fill: var(--color-primary);
+    font-size: 1.25rem;
+  }
+
+  .phone-rvrs .elementor-call-tracking-list-icon,
+  .phone-rvrs .elementor-call-tracking-list-icon svg {
+    color: var(--color-white);
+    fill: var(--color-white);
     font-size: 1.25rem;
   }
   
@@ -999,8 +933,10 @@
     color: var(--color-accent);
   }
 
-  .icon .elementor-icon-list-icon {
+  .icon .elementor-icon-list-icon,
+  .icon .elementor-icon-list-icon svg {
     color: var(--color-primary);
+    fill: var(--color-primary);
     font-size: 1.25rem;
   }
   
