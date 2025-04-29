@@ -199,6 +199,11 @@
     color: inherit;  /* Will inherit white from section-rvrs */
   }
   
+  /* Reversed section accordion icons */
+  .section-rvrs .elementor-accordion-icon {
+    color: var(--color-white);
+  }
+  
   /* Nested container paragraphs - inherit parent color */
   .nested p,
   .nested .elementor-widget-text-editor p {
