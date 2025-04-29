@@ -116,42 +116,31 @@
   .elementor-dynamic-tags h2,
   .elementor-dynamic-tags h3,
   .elementor-dynamic-tags h4 {
+    /* Typography */
     font-family: var(--font-display);
-    text-rendering: optimizeLegibility;
-    color: inherit;
     letter-spacing: -0.02em;
-  }
-  
-  /* For sections that don't specify a color, fallback to primary color */
-  .elementor-section h1,
-  .elementor-section h2,
-  .elementor-section h3,
-  .elementor-section h4,
-  .elementor-section .elementor-widget-heading h1,
-  .elementor-section .elementor-widget-heading h2,
-  .elementor-section .elementor-widget-heading h3,
-  .elementor-section .elementor-widget-heading h4,
-  .elementor-section .elementor-dynamic-tags h1,
-  .elementor-section .elementor-dynamic-tags h2,
-  .elementor-section .elementor-dynamic-tags h3,
-  .elementor-section .elementor-dynamic-tags h4 {
+
+    /* Visual */
     color: var(--color-primary);
   }
   
   /* Individual Heading Styles */
   h1, .elementor-widget-heading h1, .elementor-dynamic-tags h1 {
+    /* Typography */
     font-size: var(--step-4);
     font-weight: 700;
     line-height: 1.1;
   }
   
   h2, .elementor-widget-heading h2, .elementor-dynamic-tags h2 {
+    /* Typography */
     font-size: var(--step-3);
     font-weight: 600;
     line-height: 1.2;
   }
   
   h3, .elementor-widget-heading h3, .elementor-dynamic-tags h3 {
+    /* Typography */
     font-size: var(--step-2);
     font-weight: 500;
     line-height: 1.25;
@@ -163,51 +152,14 @@
     line-height: 1.3;
   }
   
-  /* Base paragraph styles - default to text color */
+  /* Global paragraph styles */
   p, .elementor-widget-text-editor p {
-    font-size: var(--step-0);
+    /* Typography */
     font-family: var(--font-body);
+    font-size: var(--step-0);
     font-weight: 400;
-    line-height: 2;
-    margin-bottom: var(--space-m);
-    color: var(--color-text);  /* Default to text color */
-  }
-  
-  /* Remove margin from last paragraph in text widget to prevent double spacing */
-  .elementor-widget-text-editor p:last-child {
-    margin-bottom: 0;
-  }
-  
-  /* When a button follows a text widget, remove the row gap */
-  .elementor-widget-text-editor + .elementor-widget-button {
-    margin-top: 0;  /* Override the previous margin-top we had */
-  }
-  
-  /* Remove the bottom margin of the text widget itself */
-  .elementor-widget-text-editor {
-    margin-bottom: 0;
-  }
-  
-  /* Only set left alignment for paragraphs in sections where we want it as default */
-  .section p {
-    text-align: left;
-  }
-  
-  /* Reversed section paragraphs - inherit white color */
-  .section-rvrs p,
-  .section-rvrs .elementor-widget-text-editor p {
-    color: inherit;  /* Will inherit white from section-rvrs */
-  }
-  
-  /* Reversed section accordion icons */
-  .section-rvrs .elementor-accordion-icon {
-    color: var(--color-white);
-  }
-  
-  /* Nested container paragraphs - inherit parent color */
-  .nested p,
-  .nested .elementor-widget-text-editor p {
-    color: inherit;  /* Will inherit from parent container */
+    line-height: 1.6;
+    color: inherit;
   }
   
   /* ======================================`
@@ -221,45 +173,83 @@
      ====================================== */
   
   .section-slider {
-    /* Base section styles */
-    padding: var(--space-2xl) var(--space-l);
-    row-gap: var(--space-l);
-    column-gap: var(--space-m);
-    color: var(--color-primary);
-    text-align: center;
+    /* Layout Properties */
     position: relative;
-    min-height: 50vh;
-    width: 100%;
-    background-color: var(--color-primary);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    row-gap: var(--space-l);
+    column-gap: var(--space-m);
+    text-align: center;
+
+    /* Box Model */
+    width: 100%;
+    min-height: 50vh;
+    padding: var(--space-2xl) var(--space-l);
+
+    /* Typography */
+    color: var(--color-white);
+
+    /* Visual */
+    background-color: var(--color-primary);
+  }
+  
+  /* Ensure nested containers properly inherit gaps */
+  .section-slider .nested {
+    display: flex;
+    flex-direction: column;
+    row-gap: inherit;
+    column-gap: inherit;
+  }
+
+  /* Add spacing between widgets in section-slider */
+  .section-slider .elementor-widget {
+    margin-bottom: var(--space-l);
+  }
+
+  .section-slider .elementor-widget:last-child {
+    margin-bottom: 0;
   }
   
   /* Base background image structure */
   .section-slider::before {
-    content: '';
+    /* Layout Properties */
     position: absolute;
     inset: 0;
+
+    /* Box Model */
     width: 100%;
     height: 100%;
+
+    /* Visual */
+    content: '';
     background-image: url('/wp-content/uploads/2025/04/dallas-ft-worth-home.webp');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.75;
+
+    /* Other */
     z-index: 0;
   }
   
   /* Dark overlay */
   .section-slider::after {
-    content: '';
+    /* Layout Properties */
     position: absolute;
     inset: 0;
+
+    /* Box Model */
     width: 100%;
     height: 100%;
+
+    /* Visual */
+    content: '';
     background-color: var(--color-primary);
     opacity: 0.5;
+
+    /* Other */
     z-index: 0;
   }
   
@@ -287,20 +277,22 @@
   .section-slider h2,
   .section-slider h3,
   .section-slider h4,
-  .section-slider h5,
-  .section-slider h6,
-  .section-slider p,
   .section-slider .e-con h1,
   .section-slider .e-con h2,
   .section-slider .e-con h3,
   .section-slider .e-con h4,
-  .section-slider .e-con h5,
-  .section-slider .e-con h6,
-  .section-slider .e-con p {
-    color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  .section-slider p,
+  .section-slider .e-con p
+{
+    /* Layout Properties */
     text-align: center;
-  }
+
+    /* Typography */
+    color: var(--color-white);
+
+    /* Visual */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+} 
   
   /* Mobile text alignment */
   @media screen and (max-width: 767px) {
@@ -310,14 +302,12 @@
     .section-slider h4,
     .section-slider h5,
     .section-slider h6,
-    .section-slider p,
     .section-slider .e-con h1,
     .section-slider .e-con h2,
     .section-slider .e-con h3,
     .section-slider .e-con h4,
     .section-slider .e-con h5,
-    .section-slider .e-con h6,
-    .section-slider .e-con p {
+    .section-slider .e-con h6 {
         text-align: left;
     }
 
@@ -331,12 +321,123 @@
   }
   
   /* Main Containers */
-  .section {
+  .section,
+  .section-rvrs {
+    /* Layout Properties */
     position: relative;
-    padding: var(--space-2xl) var(--space-l);
+    display: flex;
+    flex-direction: column;
     row-gap: var(--space-l);
     column-gap: var(--space-m);
-    color: var(--color-primary);  /* Section level color for headings */
+    text-align: left;
+
+    /* Box Model */
+    padding: var(--space-2xl) var(--space-l);
+  }
+
+  /* Section specific styles */
+  .section {
+    /* Typography */
+    color: var(--color-primary);
+  }
+
+  /* Reversed section specific styles */
+  .section-rvrs {
+    /* Typography */
+    color: var(--color-white);
+
+    /* Visual */
+    background-color: var(--color-primary);
+  }
+
+  /* Base paragraph styles */
+  .section p,
+  .section .elementor-widget-text-editor p,
+  .section-rvrs p,
+  .section-rvrs .elementor-widget-text-editor p {
+    /* Typography */
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    font-weight: 400;
+    line-height: 2;
+    text-align: left;
+
+    /* Box Model */
+    margin-bottom: var(--space-m);
+  }
+
+  /* Section paragraph colors */
+  .section p,
+  .section .elementor-widget-text-editor p {
+    color: var(--color-text);
+  }
+
+  /* Reversed section paragraph colors */
+  .section-rvrs p,
+  .section-rvrs .elementor-widget-text-editor p {
+    color: var(--color-white);
+  }
+
+  /* Section headings - common styles */
+  .section h1,
+  .section h2,
+  .section h3,
+  .section h4,
+  .section .elementor-heading-title,
+  .section-rvrs h1,
+  .section-rvrs h2,
+  .section-rvrs h3,
+  .section-rvrs h4,
+  .section-rvrs .elementor-heading-title {
+    text-align: center;
+    color: inherit;
+  }
+  
+  /* Mobile styles */
+  @media screen and (max-width: 767px) {
+    /* Section mobile adjustments - common styles */
+    .section h1,
+    .section h2,
+    .section h3,
+    .section h4,
+    .section .elementor-heading-title,
+    .section-rvrs h1,
+    .section-rvrs h2,
+    .section-rvrs h3,
+    .section-rvrs h4,
+    .section-rvrs .elementor-heading-title {
+      text-align: left;
+    }
+  }
+
+  /* Reversed section accordion icons */
+  .section-rvrs .elementor-accordion-icon,
+  .section-rvrs .elementor-accordion-icon svg {
+    color: var(--color-white);
+    fill: var(--color-white);
+  }
+
+  /* Nested Layouts */
+  .nested {
+    padding: 0;
+    row-gap: inherit;
+    column-gap: inherit;
+    color: inherit;
+  }
+  
+  .nested h1,
+  .nested h2,
+  .nested h3,
+  .nested h4,
+  .nested .elementor-heading-title {
+    text-align: left;
+    color: inherit;
+  }
+  
+  /* Nested container paragraphs - inherit parent color */
+  .nested p,
+  .nested .elementor-widget-text-editor p {
+    color: inherit;  /* Will inherit from parent container */
   }
   
   /* Section background variations */
@@ -408,70 +509,7 @@
     color: inherit;
   }
   
-  /* Section headings */
-  .section h1,
-  .section h2,
-  .section h3,
-  .section h4,
-  .section .elementor-heading-title {
-    text-align: center;
-    color: inherit;
-  }
-  
-  /* Section paragraphs and text */
-  .section p,
-  .section .elementor-widget-text-editor {
-    color: var(--color-text);  /* Explicitly set text color */
-  }
-  
-  /* Reversed section */
-  .section-rvrs {
-    position: relative;
-    background-color: var(--color-primary);
-    padding: var(--space-2xl) var(--space-l);
-    row-gap: var(--space-l);
-    column-gap: var(--space-m);
-    color: var(--color-white);  /* Section level color */
-  }
-  
-  /* Reversed section headings */
-  .section-rvrs h1,
-  .section-rvrs h2,
-  .section-rvrs h3,
-  .section-rvrs h4,
-  .section-rvrs .elementor-heading-title {
-    text-align: center;
-    color: inherit;
-  }
-  
-  /* Reversed section paragraphs and text */
-  .section-rvrs p,
-  .section-rvrs .elementor-widget-text-editor {
-    color: inherit;  /* Inherit white color from section-rvrs */
-  }
-  
-  /* Mobile styles */
-  @media screen and (max-width: 767px) {
-    /* Section mobile adjustments */
-    .section h1,
-    .section h2,
-    .section h3,
-    .section h4,
-    .section .elementor-heading-title {
-      text-align: left;
-    }
-
-    /* Reversed section mobile adjustments */
-    .section-rvrs h1,
-    .section-rvrs h2,
-    .section-rvrs h3,
-    .section-rvrs h4,
-    .section-rvrs .elementor-heading-title {
-      text-align: left;
-    }
-  }
-
-    /* Centered class to override section mobile alignments */
+  /* Centered class to override section mobile alignments */
   .centered h1,
   .centered h2,
   .centered h3,
@@ -488,45 +526,6 @@
     .centered h4,
     .centered .elementor-heading-title {
       text-align: center !important;
-    }
-  }
-  
-  .site-header {
-    padding-inline: var(--space-l);
-  }
-  
-  .utility {
-    padding-block: var(--space-3xs);
-    padding-inline: var(--space-l);
-    gap: 0;
-    display: grid;
-  }
-  
-  /* Nested Layouts */
-  .nested {
-    padding: 0;
-    row-gap: inherit;
-    column-gap: inherit;
-    color: inherit;
-  }
-  
-  .nested h1,
-  .nested h2,
-  .nested h3,
-  .nested h4,
-  .nested .elementor-heading-title {
-    text-align: left;
-    color: inherit;
-  }
-  
-  .nested .elementor-widget {
-    margin-bottom: 0;
-  }
-  
-  @media only screen and (max-width: 767px) {
-    .nested {
-        row-gap: var(--space-m);
-        column-gap: var(--space-s);
     }
   }
   
@@ -613,33 +612,10 @@
     background-color: var(--color-primary);
   }
   
-  /* Background overlay - moved to lowest z-index */
-  .form-container::before,
-  .elementor-section.form-container::before {
-    /* Layout */
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-
-    /* Box Model */
-    width: 100%;
-    height: 100%;
-    border-radius: 16px;
-
-    /* Visual */
-    background-image: url('/wp-content/uploads/2025/04/waves.webp');
-    background-position: center center;
-    background-attachment: scroll;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.1;
-  }
-  
-  /* Ensure content stays above overlay */
-  .form-container > .elementor-container {
-    position: relative;
-    z-index: 1;
-    height: fit-content;
+  /* Form button margin */
+  .form-container .elementor-button,
+  .elementor-section.form-container .elementor-button {
+    margin-top: var(--space-2xs);
   }
   
   /* Form Label Styles */
@@ -973,11 +949,6 @@
   /* Button Styles */
   .elementor-widget-button .elementor-button,
   .elementor-button {
-    /* Layout */
-    display: inline-block;
-    vertical-align: middle;
-    width: auto;
-
     /* Box Model */
     border-radius: 999px;
     padding: var(--space-xs) var(--space-l) var(--space-2xs) var(--space-l);
@@ -1037,6 +1008,7 @@
   .elementor-accordion-icon {
     color: var(--color-accent);
   }
+  
   
   
   
