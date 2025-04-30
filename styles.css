@@ -153,9 +153,8 @@
   }
   
   /* Global paragraph styles */
-  p, 
-  .elementor-widget-text-editor p,
- {
+  p,
+  .elementor-widget-text-editor p {
     /* Typography */
     font-family: var(--font-body);
     font-size: var(--step-0);
@@ -189,6 +188,7 @@
     width: 100%;
     min-height: 50vh;
     padding: var(--space-2xl) var(--space-l);
+    height: auto; /* Reset any inherited height */
 
     /* Typography */
     color: var(--color-white);
@@ -245,17 +245,10 @@
   }
   
   /* Text color, shadow, and alignment styles */
-  .section-slider h1,
   .section-slider h2,
-  .section-slider h3,
-  .section-slider h4,
-  .section-slider .e-con h1,
   .section-slider .e-con h2,
-  .section-slider .e-con h3,
-  .section-slider .e-con h4,
   .section-slider p,
-  .section-slider .e-con p
-{
+  .section-slider .e-con p {
     /* Layout Properties */
     text-align: center;
 
@@ -264,31 +257,29 @@
 
     /* Visual */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-} 
+  }
   
-  /* Mobile text alignment */
+  /* Mobile styles */
   @media screen and (max-width: 767px) {
-    .section-slider h1,
-    .section-slider h2,
-    .section-slider h3,
-    .section-slider h4,
-    .section-slider h5,
-    .section-slider h6,
-    .section-slider .e-con h1,
-    .section-slider .e-con h2,
-    .section-slider .e-con h3,
-    .section-slider .e-con h4,
-    .section-slider .e-con h5,
-    .section-slider .e-con h6 {
-        text-align: left;
+    .section-slider {
+      /* Box Model */
+      height: 50vh;
+      min-height: 50vh;
+      max-height: 50vh;
     }
 
-    /* Fixed height for mobile */
-    .section-slider,
     .section-slider.e-con {
-        min-height: 78vh;
-        max-height: 78vh;
-        height: 78vh;
+      /* Box Model */
+      height: 50vh;
+      min-height: 50vh;
+      max-height: 50vh;
+    }
+
+    .section-slider h2,
+    .section-slider .e-con h2,
+    .section-slider p,
+    .section-slider .e-con p {
+      text-align: left;
     }
   }
   
@@ -944,7 +935,3 @@
   .elementor-accordion-icon {
     color: var(--color-accent);
   }
-  
-  
-  
-  
