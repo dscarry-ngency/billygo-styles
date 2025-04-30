@@ -248,6 +248,7 @@
     z-index: 1;
   }
   
+  
   /* Text color, shadow, and alignment styles */
   .section-slider h2,
   .section-slider .e-con h2,
@@ -262,8 +263,16 @@
     /* Visual */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
-   
-  /* Main Containers */
+
+  /*************************************/
+  /* GENERAL SECTION STYLES            */
+  /*************************************/
+  
+  /* Main Containers - section, section-rvrs, section-tight, section-tight-rvrs */
+  
+  /* Section Layout and Box Model */
+  
+  /* Main section for general content with default spacing */
   .section,
   .section-rvrs {
     /* Layout Properties */
@@ -278,14 +287,30 @@
     padding: var(--space-2xl) var(--space-l);
   }
 
-  /* Section specific styles */
-  .section {
+  /* Tight section with reduced spacing */
+  .section-tight,
+  .section-tight-rvrs {
+    /* Layout Properties */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--space-2xs);
+    column-gap: var(--space-s);
+    text-align: left;
+
+    /* Box Model */
+    padding: var(--space-l) var(--space-l);
+  }
+
+  /* Section Visual Styles */
+  .section,
+  .section-tight {
     /* Typography */
     color: var(--color-primary);
   }
 
-  /* Reversed section specific styles */
-  .section-rvrs {
+  .section-rvrs,
+  .section-tight-rvrs {
     /* Typography */
     color: var(--color-white);
 
@@ -293,31 +318,35 @@
     background-color: var(--color-primary);
   }
 
-  /* Base paragraph styles */
+  /* Section paragraph styles */
   .section p,
   .section .elementor-widget-text-editor p,
+  .section .elementor-dynamic-tags p,
   .section-rvrs p,
-  .section-rvrs .elementor-widget-text-editor p {
+  .section-rvrs .elementor-widget-text-editor p,
+  .section-rvrs .elementor-dynamic-tags p,
+  .section-tight p,
+  .section-tight .elementor-widget-text-editor p,
+  .section-tight .elementor-dynamic-tags p,
+  .section-tight-rvrs p,
+  .section-tight-rvrs .elementor-widget-text-editor p,
+  .section-tight-rvrs .elementor-dynamic-tags p {
     /* Typography */
     font-family: var(--font-body);
     font-size: var(--step-0);
     font-weight: 400;
     line-height: 2;
     text-align: left;
-
-    /* Box Model */
-    margin-bottom: var(--space-m);
-  }
-
-  /* Section paragraph colors */
-  .section p,
-  .section .elementor-widget-text-editor p {
     color: var(--color-text);
   }
 
   /* Reversed section paragraph colors */
   .section-rvrs p,
-  .section-rvrs .elementor-widget-text-editor p {
+  .section-rvrs .elementor-widget-text-editor p,
+  .section-rvrs .elementor-dynamic-tags p,
+  .section-tight-rvrs p,
+  .section-tight-rvrs .elementor-widget-text-editor p,
+  .section-tight-rvrs .elementor-dynamic-tags p {
     color: var(--color-white);
   }
 
@@ -331,7 +360,17 @@
   .section-rvrs h2,
   .section-rvrs h3,
   .section-rvrs h4,
-  .section-rvrs .elementor-heading-title {
+  .section-rvrs .elementor-heading-title,
+  .section-tight h1,
+  .section-tight h2,
+  .section-tight h3,
+  .section-tight h4,
+  .section-tight .elementor-heading-title,
+  .section-tight-rvrs h1,
+  .section-tight-rvrs h2,
+  .section-tight-rvrs h3,
+  .section-tight-rvrs h4,
+  .section-tight-rvrs .elementor-heading-title {
     text-align: center;
     color: inherit;
   }
@@ -348,7 +387,17 @@
     .section-rvrs h2,
     .section-rvrs h3,
     .section-rvrs h4,
-    .section-rvrs .elementor-heading-title {
+    .section-rvrs .elementor-heading-title,
+    .section-tight h1,
+    .section-tight h2,
+    .section-tight h3,
+    .section-tight h4,
+    .section-tight .elementor-heading-title,
+    .section-tight-rvrs h1,
+    .section-tight-rvrs h2,
+    .section-tight-rvrs h3,
+    .section-tight-rvrs h4,
+    .section-tight-rvrs .elementor-heading-title {
       text-align: left;
     }
   }
@@ -360,7 +409,7 @@
     fill: var(--color-white);
   }
 
-  /* Nested Layouts */
+/* Nested Layouts */
   .nested {
     padding: 0;
     row-gap: inherit;
@@ -835,12 +884,16 @@
   
   /* Nested container within sections - text color inheritance */
   .section .nested .elementor-widget-text-editor,
-  .section .nested .elementor-widget-text-editor p {
+  .section .nested .elementor-widget-text-editor p,
+  .section-tight .nested .elementor-widget-text-editor,
+  .section-tight .nested .elementor-widget-text-editor p {
     color: var(--color-text);
   }
   
   .section-rvrs .nested .elementor-widget-text-editor,
-  .section-rvrs .nested .elementor-widget-text-editor p {
+  .section-rvrs .nested .elementor-widget-text-editor p,
+  .section-tight-rvrs .nested .elementor-widget-text-editor,
+  .section-tight-rvrs .nested .elementor-widget-text-editor p {
     color: inherit;
   }
   
