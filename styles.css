@@ -514,7 +514,8 @@
     margin-bottom: var(--space-s);
   }
   
-  .form-rvrs .elementor-field {
+  .form-rvrs .elementor-field,
+  .form-rvrs select {
     border: 1px solid var(--color-white);
     background-color: transparent;
     color: var(--color-white);
@@ -528,6 +529,16 @@
   
   .form-rvrs .elementor-button {
     margin-top: var(--space-2xs);
+  }
+  
+  /* Regular form field styles */
+  .elementor-field {
+    color: var(--color-text) !important;
+  }
+  
+  .elementor-field::placeholder {
+    color: var(--color-text);
+    opacity: 0.7;
   }
   
   .section-white {
@@ -584,14 +595,6 @@
   /* Hover state */
   a:not(.phone):not(.elementor-button):not(.elementor-button-link):hover {
     color: inherit;
-    opacity: 0.8;
-  }
-  
-  /* Maintain white color on hover in white sections */
-  .section-white a:hover,
-  .section-rvrs a:hover,
-  .footer a:hover {
-    color: var(--color-white);
     opacity: 0.8;
   }
   
@@ -833,7 +836,7 @@
   .elementor-widget-button .elementor-button,
   .elementor-button {
     /* Box Model */
-    border-radius: 999px;
+    border-radius: 5px;
     padding: var(--space-xs) var(--space-l) var(--space-2xs) var(--space-l);
 
     /* Typography */
