@@ -174,24 +174,23 @@
      ====================================== */
   
   .section-slider {
-    /* Layout Properties */
+    /* Layout */
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     row-gap: var(--space-l);
     column-gap: var(--space-m);
     text-align: center;
 
     /* Box Model */
     width: 100%;
-    min-height: 50vh;
-    padding: var(--space-2xl) var(--space-l);
-    height: auto; /* Reset any inherited height */
+    padding: var(--space-xl) var(--space-l);
 
     /* Typography */
     color: var(--color-white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 
     /* Visual */
     background-color: var(--color-primary);
@@ -199,23 +198,16 @@
   
   /* Base background image structure */
   .section-slider::before {
-    /* Layout Properties */
+    content: '';
     position: absolute;
-    inset: 0;
-
-    /* Box Model */
+    inset: 0; /* shorthand for top: 0; right: 0; bottom: 0; left: 0; */
     width: 100%;
     height: 100%;
-
-    /* Visual */
-    content: '';
     background-image: url('/wp-content/uploads/2025/04/dallas-ft-worth-home.webp');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.75;
-
-    /* Other */
     z-index: 0;
   }
   
@@ -258,31 +250,7 @@
     /* Visual */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
-  
-  /* Mobile styles */
-  @media screen and (max-width: 767px) {
-    .section-slider {
-      /* Box Model */
-      height: 50vh;
-      min-height: 50vh;
-      max-height: 50vh;
-    }
-
-    .section-slider.e-con {
-      /* Box Model */
-      height: 50vh;
-      min-height: 50vh;
-      max-height: 50vh;
-    }
-
-    .section-slider h2,
-    .section-slider .e-con h2,
-    .section-slider p,
-    .section-slider .e-con p {
-      text-align: left;
-    }
-  }
-  
+   
   /* Main Containers */
   .section,
   .section-rvrs {
@@ -615,6 +583,15 @@
   
   /* Hover state */
   a:not(.phone):not(.elementor-button):not(.elementor-button-link):hover {
+    color: inherit;
+    opacity: 0.8;
+  }
+  
+  /* Maintain white color on hover in white sections */
+  .section-white a:hover,
+  .section-rvrs a:hover,
+  .footer a:hover {
+    color: var(--color-white);
     opacity: 0.8;
   }
   
