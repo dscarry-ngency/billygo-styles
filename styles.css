@@ -433,19 +433,34 @@
     color: inherit;
   }
   
+  /* Nested container with no gaps */
+  .nested-nogap {
+    padding: 0;
+    row-gap: 0;
+    column-gap: 0;
+    color: inherit;
+  }
+  
   .nested h1,
   .nested h2,
   .nested h3,
   .nested h4,
-  .nested .elementor-heading-title {
+  .nested .elementor-heading-title,
+  .nested-nogap h1,
+  .nested-nogap h2,
+  .nested-nogap h3,
+  .nested-nogap h4,
+  .nested-nogap .elementor-heading-title {
     text-align: left;
     color: inherit;
   }
   
   /* Nested container paragraphs - inherit parent color */
   .nested p,
-  .nested .elementor-widget-text-editor p {
-    color: inherit;  /* Will inherit from parent container */
+  .nested-nogap p,
+  .nested .elementor-widget-text-editor p,
+  .nested-nogap .elementor-widget-text-editor p {
+    color: inherit;
   }
   
   /* Section background variations */
@@ -660,6 +675,8 @@
   /* Call Tracking List Widget - only when .phone class is applied */
   .phone .elementor-call-tracking-list-item,
   .phone .call-tracking-widget-list_link,
+  .phone-rvrs .elementor-call-tracking-list-item,
+  .phone-rvrs .call-tracking-widget-list_link,
   /* Icon List Widget - only when .icon class is applied */
   .icon .elementor-icon-list-item,
   .icon .elementor-icon-list-text,
@@ -670,7 +687,7 @@
   }
   
   /* Hover state */
-  a:not(.phone):not(.elementor-button):not(.elementor-button-link):hover {
+  a:not(.phone):not(.phone-rvrs):not(.elementor-button):not(.elementor-button-link):hover {
     color: inherit;
     opacity: 0.8;
   }
@@ -993,4 +1010,36 @@
   /* Accordion Icon Styles */
   .elementor-accordion-icon {
     color: var(--color-accent);
+  }
+
+
+  /* ======================================
+     Helpers
+     ====================================== */
+  
+  /* Typography */
+  .line-height-1-2 {
+    line-height: 1.2;
+  }
+
+  /* Remove all margins and gaps */
+  .nogap {
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    row-gap: 0 !important;
+    column-gap: 0 !important;
+  }
+
+  /* Remove text-specific spacing */
+  .text-nogap {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* Section tight with reduced top padding */
+  .section-tight.padding-top-2xs {
+    padding: var(--space-2xs) var(--space-l) var(--space-l) var(--space-l) !important;
   }
