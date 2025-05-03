@@ -580,8 +580,60 @@
   
   /* Form button margin */
   .form-container .elementor-button,
-  .elementor-section.form-container .elementor-button {
+  .elementor-section.form-container .elementor-button,
+  .form-rvrs .elementor-button {
+    /* Inherit base button styles */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    padding: 0.75em 1.5em;
+    font-size: var(--step--0);
+    font-weight: 600;
+    line-height: 1.2;
+    text-transform: uppercase !important;
+    background-color: var(--color-accent) !important;
+    color: var(--color-white) !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    /* Form specific styles */
     margin-top: var(--space-2xs);
+  }
+  
+  /* Form button hover state */
+  .form-container .elementor-button:hover,
+  .elementor-section.form-container .elementor-button:hover,
+  .form-rvrs .elementor-button:hover {
+    opacity: 0.85;
+  }
+  
+  /* Form button full width */
+  .form-container .btn-full .elementor-button-wrapper,
+  .form-rvrs .btn-full .elementor-button-wrapper {
+    display: flex;
+    justify-content: stretch;
+  }
+
+  .form-container .btn-full .elementor-button,
+  .form-rvrs .btn-full .elementor-button {
+    flex-grow: 1;
+    width: auto;
+  }
+
+  /* Form button auto/full width */
+  .form-container .btn-auto-full .elementor-button-wrapper,
+  .form-rvrs .btn-auto-full .elementor-button-wrapper {
+    text-align: left;
+    display: block;
+  }
+
+  @media (max-width: 767px) {
+    .form-container .btn-auto-full .elementor-button-wrapper,
+    .form-rvrs .btn-auto-full .elementor-button-wrapper {
+        display: flex;
+        justify-content: stretch;
+    }
   }
   
   /* Form Label Styles */
@@ -663,56 +715,58 @@
     color: var(--color-white) !important;
   }
   
-  /* Global Link Styles */
-  a {
-    color: inherit;
-    text-decoration: underline;
-    font-weight: 600;
-    transition: opacity 0.2s ease;
-  }
-  
-  /* Exclude specific link types */
-  /* Call Tracking List Widget - only when .phone class is applied */
-  .phone .elementor-call-tracking-list-item,
-  .phone .call-tracking-widget-list_link,
-  .phone-rvrs .elementor-call-tracking-list-item,
-  .phone-rvrs .call-tracking-widget-list_link,
-  /* Icon List Widget - only when .icon class is applied */
-  .icon .elementor-icon-list-item,
-  .icon .elementor-icon-list-text,
-  /* Global button exclusions */
-  .elementor-button,
-  .elementor-button-link {
-    text-decoration: none;
-  }
-  
-  /* Hover state */
-  a:not(.phone):not(.phone-rvrs):not(.elementor-button):not(.elementor-button-link):hover {
-    color: inherit;
-    opacity: 0.8;
-  }
-  
-  /* Lists - default state */
-  .elementor-widget-text-editor ul:not(.elementor-icon-list-items),
-  .elementor-text-editor ul:not(.elementor-icon-list-items) {
-      list-style: disc;  /* Restore default bullet style */
-      padding-left: 1.5em;
-      margin: 1em 0;
-      color: inherit;  /* Allow inheritance from parent sections */
-      font-family: inherit;  /* Allow font inheritance */
-  }
-  
-  .elementor-widget-text-editor ul:not(.elementor-icon-list-items) li,
-  .elementor-text-editor ul:not(.elementor-icon-list-items) li {
-      color: inherit;  /* Allow inheritance from parent sections */
-      font-family: inherit;  /* Allow font inheritance */
-  }
-  
-  /* Only set default color when not in a styled section */
-  :where(.elementor-widget-text-editor ul):not(.elementor-icon-list-items):not(.section-rvrs *):not(.section-white *):not([class*='section-']) {
-      color: var(--color-text);
-      font-family: var(--font-body);  /* Default font for unstyled sections */
-  }
+ /* =========================================
+   Global Link Styles
+   ========================================= */
+
+/* Default link appearance */
+a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+/* Hover effect on links that are underlined */
+a:not(.no-underline):hover {
+  opacity: 0.8;
+}
+
+/* Utility class to disable underline globally */
+a.no-underline {
+  text-decoration: none !important;
+}
+
+/* =========================================
+   Specific exclusions (auto-assigned or legacy)
+   ========================================= */
+
+/* Call Tracking Links – no underline if within phone wrappers or marked */
+.phone a.elementor-call-tracking-list-item,
+.phone a.call-tracking-widget-list_link,
+.phone-rvrs a.elementor-call-tracking-list-item,
+.phone-rvrs a.call-tracking-widget-list_link,
+a.call-tracking-widget-list_link,
+a.elementor-call-tracking-list-item {
+  text-decoration: none !important;
+}
+
+/* Icon List Widget – no underline when using .icon context */
+.icon a.elementor-icon-list-item,
+.icon a.elementor-icon-list-text {
+  text-decoration: none !important;
+}
+
+/* Elementor Buttons and Custom Width Classes – no underline */
+a.elementor-button,
+a.elementor-button-link,
+a.wp-element-button,
+a.button-auto,
+a.button-auto-full,
+a.button-full {
+  text-decoration: none !important;
+}
+
   
   /* ======================================
      Section Header Styles
@@ -929,28 +983,75 @@
   .section-tight-rvrs .nested .elementor-widget-text-editor p {
     color: inherit;
   }
-  
-  /* Button Styles */
-  .elementor-widget-button .elementor-button,
-  .elementor-button {
+
+/* =========================================
+   Base Button Visual Styles (applies to all buttons)
+   ========================================= */
+   .elementor-widget-button .elementor-button,
+   .form-container .elementor-button,
+   .form-rvrs .elementor-button {
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
     /* Box Model */
     border-radius: 5px;
+    padding: 0.75em 1.5em;
+
     /* Typography */
-    /* font-family: var(--font-display); */
     font-size: var(--step--0);
     font-weight: 600;
     line-height: 1.2;
-    text-transform: uppercase;
+    text-transform: uppercase !important;
 
     /* Visual */
-    background-color: var(--color-accent);
-    color: var(--color-white);
+    background-color: var(--color-accent) !important;
+    color: var(--color-white) !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
   
-  @media only screen and (max-width: 767px) {
-    .elementor-widget-button .elementor-button,
-    .elementor-button {
-        width: 100%;
+  /* Hover state */
+  .elementor-widget-button .elementor-button:hover,
+  .form-container .elementor-button:hover,
+  .form-rvrs .elementor-button:hover {
+    opacity: 0.85;
+  }
+  
+  /* =========================================
+     Layout Behavior (Custom Classes)
+     ========================================= */
+  
+  /* Base = no layout override */
+  /* Buttons will inherit Elementor section or column alignment naturally */
+  
+  /* Full width on all devices */
+  .elementor-widget-button.btn-full .elementor-button-wrapper {
+    display: flex;
+    justify-content: stretch;
+  }
+  
+  .elementor-widget-button.btn-full .elementor-button {
+    flex-grow: 1;
+    width: auto;
+  }
+  
+  /* Auto on desktop, full width on mobile */
+  .elementor-widget-button.btn-auto-full .elementor-button-wrapper {
+    text-align: left;
+    display: block;
+  }
+  
+  @media (max-width: 767px) {
+    .elementor-widget-button.btn-auto-full .elementor-button-wrapper {
+      display: flex;
+      justify-content: stretch;
+    }
+  
+    .elementor-widget-button.btn-auto-full .elementor-button {
+      flex-grow: 1;
+      width: auto;
     }
   }
   
