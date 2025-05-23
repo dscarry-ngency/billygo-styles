@@ -1189,8 +1189,8 @@ a.button-full {
 
 /* Hover state */
 .elementor-widget-button.btn-side .elementor-button:hover {
-    background-color: #01BBFF !important;
+    background-color: var(--color-accent) !important;
     color: var(--color-white) !important;
-    border-color: #01BBFF;
+    border-color: var(--color-accent);
     opacity: 1;
 }
